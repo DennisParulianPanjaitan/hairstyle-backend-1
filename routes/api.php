@@ -48,46 +48,43 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/user/login', 'login');
     Route::post('/updateuser', 'updateUser');
     Route::post('/lupapassword', 'lupaPass');
-    Route::post('/verifikasiotp', action: 'verifyOtp');
-    Route::post('/logout', 'login');
-
+    Route::post('/verifikasiotp',action: 'verifyOtp');
+    Route::post('/logout','login');
+    
     // GET
     Route::get('/user/{username}', 'getUserByUsername');
-});
-Route::controller(ProductController::class)->group(function () {
-    Route::get('/getproduct', 'getProduct');
-});
-Route::controller(BarbershopController::class)->group(function () {
-    Route::post('/getbarbershop', 'getBarbershop');
-});
-Route::controller(CompatiblefaceController::class)->group(function () {
-    Route::post('/getcompatibleface', 'getcompatibleface');
-});
-Route::controller(HaircutController::class)->group(function () {
-    Route::get('/gethaircut', 'gethaircut');
-});
-Route::controller(RecommendationController::class)->group(function () {
-    Route::post('/getrekomendasi', 'getrecommendation');
-});
-Route::controller(ScanhistoryController::class)->group(function () {
-    Route::post('/getscanhistory', 'getscanhistory');
-});
-Route::post('/product', function () {
-    return response()->noContent();
-});
-Route::post('/haircut', function () {
-    return response()->noContent();
-});
-Route::post('/face', function () {
-    return response()->noContent();
-});
-Route::post('/scan', function () {
-    return response()->noContent();
-});
-Route::post('/recommendation', function () {
-    return response()->noContent();
-});
-Route::post('/barbershop', function () {
-    return response()->noContent();
+
+    Route::middleware('auth:api')->get('user', 'getUser');
+    Route::middleware('auth:api')->post('logout', 'logout');
 });
 
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/getproduct','getProduct');
+});
+
+Route::controller(BarbershopController::class)->group(function () {
+    Route::get('/getbarbershop','getBarbershop');
+});
+
+Route::controller(CompatiblefaceController::class)->group(function () {
+    Route::get('/getcompatibleface','getcompatibleface');
+});
+
+Route::controller(HaircutController::class)->group(function () {
+    Route::get('/gethaircut','gethaircut');
+});
+
+Route::controller(RecommendationController::class)->group(function () {
+    Route::get('/getrekomendasi','getrecommendation');
+});
+
+Route::controller(ScanhistoryController::class)->group(function () {
+    Route::get('/getscanhistory','getscanhistory');
+});
+
+Route::post('/product', function () {return response()->noContent();});
+Route::post('/haircut', function () {return response()->noContent();});
+Route::post('/face', function () {return response()->noContent();});
+Route::post('/scan', function () {return response()->noContent();});
+Route::post('/recommendation', function () {return response()->noContent();});
+Route::post('/barbershop', function () {return response()->noContent();});
