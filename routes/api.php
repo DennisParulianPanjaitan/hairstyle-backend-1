@@ -27,7 +27,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // function () {return response()->noContent();} //Function that is a placeholder for doing nothing post request
-Route::get('/', function () {return "Selamat datang di Hairstyle app api";});
+Route::get('/', function () {
+    return "Selamat datang di Hairstyle app api";
+});
 Route::redirect('/tesroute', '/');
 Route::get('/tesdb', function () {
     try {
@@ -46,33 +48,46 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/user/login', 'login');
     Route::post('/updateuser', 'updateUser');
     Route::post('/lupapassword', 'lupaPass');
-    Route::post('/verifikasiotp',action: 'verifyOtp');
-    Route::post('/logout','login');
+    Route::post('/verifikasiotp', action: 'verifyOtp');
+    Route::post('/logout', 'login');
 
     // GET
     Route::get('/user/{username}', 'getUserByUsername');
 });
 Route::controller(ProductController::class)->group(function () {
-    Route::post('/getproduct','getProduct');
+    Route::get('/getproduct', 'getProduct');
 });
 Route::controller(BarbershopController::class)->group(function () {
-    Route::post('/getbarbershop','getBarbershop');
+    Route::post('/getbarbershop', 'getBarbershop');
 });
 Route::controller(CompatiblefaceController::class)->group(function () {
-    Route::post('/getcompatibleface','getcompatibleface');
+    Route::post('/getcompatibleface', 'getcompatibleface');
 });
 Route::controller(HaircutController::class)->group(function () {
-    Route::post('/gethaircut','gethaircut');
+    Route::get('/gethaircut', 'gethaircut');
 });
 Route::controller(RecommendationController::class)->group(function () {
-    Route::post('/getrekomendasi','getrecommendation');
+    Route::post('/getrekomendasi', 'getrecommendation');
 });
 Route::controller(ScanhistoryController::class)->group(function () {
-    Route::post('/getscanhistory','getscanhistory');
+    Route::post('/getscanhistory', 'getscanhistory');
 });
-Route::post('/product', function () {return response()->noContent();});
-Route::post('/haircut', function () {return response()->noContent();});
-Route::post('/face', function () {return response()->noContent();});
-Route::post('/scan', function () {return response()->noContent();});
-Route::post('/recommendation', function () {return response()->noContent();});
-Route::post('/barbershop', function () {return response()->noContent();});
+Route::post('/product', function () {
+    return response()->noContent();
+});
+Route::post('/haircut', function () {
+    return response()->noContent();
+});
+Route::post('/face', function () {
+    return response()->noContent();
+});
+Route::post('/scan', function () {
+    return response()->noContent();
+});
+Route::post('/recommendation', function () {
+    return response()->noContent();
+});
+Route::post('/barbershop', function () {
+    return response()->noContent();
+});
+
