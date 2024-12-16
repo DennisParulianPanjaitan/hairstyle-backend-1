@@ -46,9 +46,9 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/user/login', 'login');
     Route::post('/updateuser', 'updateUser');
     Route::post('/lupapassword', 'lupaPass');
-    Route::post('/verifikasiotp',action: 'verifyOtp');
-    Route::post('/logout','login');
-    
+    Route::post('/verifikasiotp', action: 'verifyOtp');
+    Route::post('/logout', 'login');
+
     // GET
     Route::get('/user/{username}', 'getUserByUsername');
 
@@ -58,25 +58,25 @@ Route::controller(UserController::class)->group(function () {
 });
 
 Route::controller(BarbershopController::class)->group(function () {
-    Route::get('/getbarbershop','getBarbershop');
+    Route::get('/getbarbershop', 'getBarbershop');
 });
 
 Route::controller(CompatiblefaceController::class)->group(function () {
-    Route::get('/getcompatibleface','getcompatibleface');
+    Route::get('/getcompatibleface', 'getcompatibleface');
 });
 
 Route::controller(HaircutController::class)->group(function () {
-    Route::get('/gethaircut','gethaircut');
+    Route::get('/gethaircut', 'gethaircut');
 });
 
 Route::controller(ProductController::class)->group(function () {
-    Route::get('/getproduct','getProduct');
+    Route::get('/getproduct', 'getProduct');
 });
 
 Route::controller(RecommendationController::class)->group(function () {
-    Route::get('/getrekomendasi','getrecommendation');
+    Route::get('/getrekomendasi', 'getrecommendation');
 });
 
 Route::controller(ScanhistoryController::class)->group(function () {
-    Route::get('/getscanhistory','getscanhistory');
+    Route::get('/getscanhistory', 'getscanhistory');
 });
